@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "ingredients/edit", type: :view do
   before(:each) do
-    @ingredient = assign(:ingredient, Ingredient.create!())
+    @ingredient = assign(:ingredient, create(:ingredient))
   end
 
   it "renders the edit ingredient form" do
