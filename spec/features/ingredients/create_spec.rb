@@ -27,4 +27,13 @@ describe "Creating ingredients" do
      expect(page).to have_content("Name can't be blank")
      expect(Ingredient.count).to eq(0)
   end
+  context "when ingredient with same name already exists" do
+     let!(:existing_ingredient) { create(:ingredient) }
+    
+     it "displays an error when creating ingredient with non-unique name" do
+        create_ingredient
+	expect(page).to have_content("Name has already been taken")
+	expect(Ingredient.count).to eq(1)
+     end
+  end
 end
