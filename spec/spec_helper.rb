@@ -13,8 +13,17 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.expect_with :rspec do |expectations|
   config.include FactoryGirl::Syntax::Methods
-  config.after :all do
-    ActiveRecord::Base.subclasses.each(&:delete_all)
+  config.use_transactional_fixtures = false
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

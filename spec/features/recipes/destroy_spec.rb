@@ -14,5 +14,6 @@ describe "Creating recipes" do
 
      expect(page).to have_content("Recipe was successfully destroyed.")
      expect(page).to_not have_content(recipe.name)
+     expect(Recipe.count).to eq(0)
   end
 end

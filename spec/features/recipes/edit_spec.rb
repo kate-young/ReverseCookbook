@@ -27,4 +27,18 @@ describe "Creating recipes" do
      expect(page).to have_content("My Recipe")
      expect(page).to have_content("This is my recipe")
   end
+  it "displays an error when the recipe has no name" do
+     edit_recipe recipe: recipe, name: ""
+
+     recipe.reload
+     
+     expect(page).to have_content("Name can't be blank")
+  end
+  it "displays an error when the recipe has no description" do
+     edit_recipe recipe: recipe, description: ""
+
+     recipe.reload
+
+     expect(page).to have_content("Description can't be blank") 
+  end
 end
