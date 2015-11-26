@@ -1,0 +1,34 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$primary: #7A211A;
+$secondary: #EDAB12;
+$tertiary: #61513C;
+
+h1 {
+   color: $primary;
+}
+li {
+   list-style-type: none;
+}
+dl {
+   dt {
+      color: $tertiary;
+      padding-top: 10px;
+      border-bottom: 1px solid $tertiary;
+      a {
+         font-weight: normal;
+      }
+   } 
+   dd {
+      margin: 10px;
+   }
+}
+a:hover {
+   background-color: transparent;
+   text-decoration: none;
+}

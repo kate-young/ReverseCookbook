@@ -6,12 +6,12 @@
 <% @ingredients.each do |ingredient| %>
      <li id="<%= dom_id(ingredient) %>">
       <%= ingredient.name %>
+      <span class="pull-right">
       <%= link_to 'Show', ingredient %>
       <%= link_to 'Edit', edit_ingredient_path(ingredient) %>
       <%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </span>
       </li>
 <% end %>
 </ul>
-<br>
-
-<%= link_to 'New Ingredient', new_ingredient_path %>
+<%= link_to 'New Ingredient', new_ingredient_path, class: "btn btn-default" %>
