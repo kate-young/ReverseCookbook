@@ -14,10 +14,31 @@ RSpec.describe UserSessionsController, type: :controller do
   end
 
   describe "POST #create" do
-     it "redirects to the recipes path" do
-        post :create, email: "string@string.com", password: "string"
-        expect(response).to be_redirect
-        expect(response).to redirect_to(recipes_path)	
+     context "with correct credentials" do
+
+	let!(:user) { create(:user) }
+
+	def post_user_session
+	   post :create, email: user.email, password: user.password
+	end
+
+	it "redirects to the recipes path" do
+           post_user_session
+	   expect(response).to be_redirect
+	   expect(response).to redirect_to(recipes_path)	
+	end
+
+	it "finds the user" do
+	   expect(User).to receive(:find_by).with({email: user.email}).and_return(user)
+           post_user_session
+	end
+
+	it "authenticates the user" do
+           User.stub(:find_by).and_return(user)
+	   expect(user).to receive(:authenticate)
+           post_user_session
+	end
+
      end
   end
 
