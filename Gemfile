@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.0'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development, :test do
   gem 'database_cleaner'
@@ -24,5 +25,5 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 2.5'
 end
