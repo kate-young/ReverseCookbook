@@ -6,26 +6,50 @@
 @import "bootstrap";
 
 $primary: #7A211A;
+$primary-light: #B33C33;
 $secondary: #EDAB12;
+$secondary-light: #FFD464;
 $tertiary: #61513C;
+$beige: #EDD7A5;
+$gray: #D1C8BD;
+$white: #FFFFFF;
 
 h1 {
    color: $primary;
 }
+.navbar-default {
+   background-color: $primary-light;
+}
+.navbar-header{
+   text-transform: uppercase;
+   text-decoration: bold;
+   background-color: $primary-light;
+   .navbar-brand {
+      &:hover {
+	 color: $secondary-light;
+      }
+      color: $secondary;
+   }
+}
 li {
    list-style-type: none;
 }
-dl {
-   dt {
-      color: $tertiary;
-      padding-top: 10px;
-      border-bottom: 1px solid $tertiary;
-      a {
-         font-weight: normal;
-      }
-   } 
-   dd {
-      margin: 10px;
+.panel-default {
+   border: none;
+   .panel-heading {
+      background-color: $gray;
+   }
+}
+.panel-list {
+   margin-bottom: 0px;
+   border-radius: 0px; 
+}   
+.btn-default {
+   border-radius: 0px;
+   &:hover {
+      background-color: $secondary-light;
+      border: none;
+      color: $white;
    }
 }
 a:hover {
