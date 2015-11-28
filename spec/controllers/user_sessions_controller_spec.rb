@@ -39,7 +39,27 @@ RSpec.describe UserSessionsController, type: :controller do
            post_user_session
 	end
 
-     end
-  end
+	it "sets the user_id in the session" do
+           post_user_session
+	   expect(session[:user_id]).to eq(user.id)
+	end
 
+	it "sets the flash success message" do
+	   post_user_session
+	   expect(flash[:success]).to eq("You are now logged in.")
+	end
+     end
+
+     context "with blank credentials" do
+	it "renders the new template" do
+           post :create
+	   expect(response).to render_template('new')
+	end
+
+	it "sets the flash error message" do
+	   post :create
+	   expect(flash[:error]).to eq("There was a problem loggin in. Please check your email and password.")
+	end
+     end
+   end
 end

@@ -4,7 +4,13 @@ class UserSessionsController < ApplicationController
 
   def create 
      user = User.find_by(email: params[:email])
-     user.authenticate(params[:password])
-     redirect_to recipes_path
+     if user && user.authenticate(params[:password])
+	session[:user_id] = user.id
+	flash[:success]  = "You are now logged in."
+	redirect_to recipes_path
+     else
+	flash[:error] = "There was a problem logging in"
+	render action: 'new'
+     end
   end
 end
