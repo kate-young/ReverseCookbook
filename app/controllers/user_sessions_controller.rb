@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
 	flash[:success]  = "You are now logged in."
 	redirect_to recipes_path
      else
-	flash[:error] = "There was a problem logging in"
+	flash[:error] = "There was a problem logging in. Please check your email and password."
 	render action: 'new'
      end
   end

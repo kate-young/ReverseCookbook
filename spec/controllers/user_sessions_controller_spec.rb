@@ -58,7 +58,7 @@ RSpec.describe UserSessionsController, type: :controller do
 
 	it "sets the flash error message" do
 	   post :create
-	   expect(flash[:error]).to eq("There was a problem loggin in. Please check your email and password.")
+	   expect(flash[:error]).to eq("There was a problem logging in. Please check your email and password.")
 	end
      end
    end

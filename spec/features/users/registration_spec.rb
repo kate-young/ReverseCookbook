@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Signing Up"
+describe "Signing Up" do
    it "allows a user to sign up for the sige and creates the object in the database" do
       expect(User.count).to eq(0)
       visit "/"
